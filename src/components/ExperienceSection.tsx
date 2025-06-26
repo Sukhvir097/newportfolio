@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const staggerContainer = {
@@ -19,24 +19,38 @@ const staggerContainer = {
 const experiences = [
   {
     role: "Full Stack Developer",
-    company: "TechNova Solutions",
-    location: "Calgary, AB",
-    duration: "Mar 2023 – Present",
+    company: "G2i Inc.",
+    location: "Remote | Florida, US",
+    duration: "Dec 2023 – May 2025",
     details: [
-      "Built scalable full-stack web applications using React, Node.js, and MongoDB.",
-      "Led migration of legacy code to TypeScript and improved maintainability.",
-      "Integrated third-party APIs including Stripe, SendGrid, and Firebase.",
+      "Developed full-stack web applications using React, Next.js, Node.js, and Material UI.",
+      "Created and consumed REST APIs with optimized SQL queries.",
+      "Designed prototypes and wireframes using Figma.",
+      "Wrote unit and integration tests with Jest.",
+      "Worked in Agile teams using Jira for sprint planning.",
     ],
   },
   {
-    role: "Frontend Developer",
-    company: "BrightApps Inc.",
-    location: "Remote",
-    duration: "Jan 2022 – Feb 2023",
+    role: "Software Designer",
+    company: "INFOWIZ Software Solutions",
+    location: "Chandigarh, India",
+    duration: "Apr 2020 – Jul 2021",
     details: [
-      "Developed responsive UIs using Next.js and Tailwind CSS.",
-      "Optimized performance with lazy loading and code splitting.",
-      "Collaborated with designers to refine UX using Figma and Storybook.",
+      "Built web apps with JavaScript, HTML, CSS, and React.",
+      "Integrated frontend with REST APIs from backend teams.",
+      "Contributed to Agile ceremonies and project reviews.",
+      "Ensured responsive, cross-browser compatible designs.",
+    ],
+  },
+  {
+    role: "Software Engineer",
+    company: "EVA Solutions (P) Ltd.",
+    location: "Patiala, India",
+    duration: "Sep 2018 – Mar 2019",
+    details: [
+      "Maintained and enhanced existing web applications.",
+      "Optimized CSS/JavaScript for better performance.",
+      "Participated in code reviews and requirement analysis.",
     ],
   },
 ];
@@ -45,7 +59,7 @@ export default function ExperienceSection() {
   return (
     <motion.section
       id="experience"
-      className="py-16 px-4 max-w-5xl mx-auto text-center space-y-10 sm:px-6 md:px-10"
+      className="py-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:py-12 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -58,27 +72,43 @@ export default function ExperienceSection() {
         Work Experience
       </motion.h2>
 
-      <div className="space-y-8 text-left">
-        {experiences.map(({ role, company, location, duration, details }) => (
-          <motion.div
-            key={role}
-            variants={fadeInUp}
-            className="rounded-xl border border-gray-200 bg-white/60 backdrop-blur p-6 shadow-md hover:shadow-lg transition-all"
-          >
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-              <h3 className="text-lg font-semibold text-indigo-600">
-                {role} <span className="text-gray-700 font-medium">— {company}</span>
-              </h3>
-              <p className="text-sm text-gray-500 mt-1 sm:mt-0">{duration}</p>
-            </div>
-            <p className="text-sm text-gray-600 italic mt-1">{location}</p>
-            <ul className="list-disc list-inside mt-3 text-sm text-gray-700 space-y-1">
-              {details.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+      <div className="relative">
+        {/* Center timeline line */}
+        <div className="absolute left-1/2 w-[2px] h-full bg-gray-300 -translate-x-1/2"></div>
+
+        <div className="space-y-20">
+          {experiences.map((exp, idx) => {
+            const isLeft = idx % 2 === 0;
+            return (
+              <motion.div
+                key={exp.role + exp.company}
+                variants={fadeInUp}
+                className={`relative w-full md:w-1/2 px-4 ${
+                  isLeft
+                    ? "md:pr-8 md:mr-auto text-right"
+                    : "md:pl-8 md:ml-auto text-left"
+                }`}
+              >
+
+                <div>
+                  <div className="flex justify-between items-center mb-1 text-sm text-gray-800 font-medium">
+                    <h3>
+                      {exp.role}{" "}
+                      <span className="font-normal text-gray-600">— {exp.company}</span>
+                    </h3>
+                    <span className="text-xs text-gray-500">{exp.duration}</span>
+                  </div>
+                  <p className="italic text-xs text-gray-500 mb-2">{exp.location}</p>
+                  <ul className="list-disc list-inside space-y-0.5 text-xs text-gray-700">
+                    {exp.details.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </motion.section>
   );
