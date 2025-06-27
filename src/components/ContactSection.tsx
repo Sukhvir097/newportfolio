@@ -18,6 +18,38 @@ const staggerContainer = {
 };
 
 export default function ContactSection() {
+
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        toast.success("Thanks for your message!!");
+        form.reset();
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch {
+      toast.error("Failed to send. Try again later.");
+    }
+  };
+
   return (
     <motion.section
       id="contact"
@@ -51,11 +83,7 @@ export default function ContactSection() {
       <motion.form
         aria-label="Contact form"
         variants={fadeInUp}
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.currentTarget.reset();
-          toast.success("Thanks for your message!!");
-        }}
+        onSubmit={handleSubmit}
         className="flex flex-col gap-4 text-sm text-left"
       >
         <motion.div variants={fadeInUp}>

@@ -62,7 +62,7 @@ function ProjectCard({
     <motion.div
       ref={ref}
       style={{ scale, opacity }}
-      className={`mx-auto flex flex-col sm:flex-row items-center ${
+      className={`relative mx-auto flex flex-col sm:flex-row items-center ${
         isEven ? "sm:flex-row-reverse" : ""
       } gap-6 bg-white border border-gray-200 rounded-lg p-4 sm:p-5 shadow-sm hover:shadow-md transition`}
     >
