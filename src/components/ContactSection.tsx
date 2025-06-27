@@ -54,7 +54,7 @@ export default function ContactSection() {
         onSubmit={(e) => {
           e.preventDefault();
           e.currentTarget.reset();
-          toast.success("Thanks for your message!");
+          toast.success("Thanks for your message!!");
         }}
         className="flex flex-col gap-4 text-sm text-left"
       >
