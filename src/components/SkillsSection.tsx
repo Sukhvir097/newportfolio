@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { skills } from "../components/data";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,25 +16,6 @@ const staggerContainer = {
     },
   },
 };
-
-const skills = [
-  "React.js",
-  "Next.js",
-  "TypeScript & JavaScript (ES6+)",
-  "Tailwind CSS",
-  "Material UI",
-  "Node.js & Express.js",
-  "MongoDB + Mongoose",
-  "RESTful API Design",
-  "JWT Authentication",
-  "Git & GitHub",
-  "Docker",
-  "Vercel & Netlify",
-  "Jira & Figma",
-  "Jest",
-  "React Testing Library",
-  "Postman",
-];
 
 export default function SkillsSection() {
   return (
@@ -55,18 +37,19 @@ export default function SkillsSection() {
       </motion.h2>
 
       <div role="list" className="flex flex-wrap justify-center gap-3">
-        {skills.map((skill) => (
-          <button
-            key={skill}
+        {skills.map((s) => (
+          <motion.button
+            key={s}
+            variants={fadeInUp}
             type="button"
-            className="cursor-default select-none rounded-lg bg-gray-100 border border-gray-300 px-4 py-2 text-gray-800 text-sm font-medium shadow-sm "
+            className="cursor-default select-none rounded-lg bg-white/50 border border-gray-300 px-4 py-2 text-gray-800 text-sm font-medium shadow-sm transition hover:scale-105 hover:bg-white"
             role="listitem"
             tabIndex={0}
-            aria-label={skill}
-            title={skill}
+            aria-label={s}
+            title={s}
           >
-            {skill}
-          </button>
+            {s}
+          </motion.button>
         ))}
       </div>
     </motion.section>

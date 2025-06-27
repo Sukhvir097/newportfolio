@@ -30,9 +30,12 @@ export default function HomeSection() {
       viewport={{ once: true }}
       variants={staggerContainer}
     >
-      <motion.div variants={fadeInUp} className="flex justify-center mt-18 sm:mt-0">
+      <motion.div
+        variants={fadeInUp}
+        className="flex justify-center mt-18 sm:mt-0"
+      >
         <Image
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
+          src="/2N1A4997.JPG"
           alt="Sukhvir Singh"
           width={100}
           height={100}
@@ -45,10 +48,11 @@ export default function HomeSection() {
         variants={fadeInUp}
         className="text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed px-2"
       >
-        <span className="font-bold">Hello, {"I'm"} Sukhvir Singh.</span>{" "}
-        {"I'm"} a <span className="font-bold">Full-Stack Developer</span> with{" "}
+        <span className="font-bold">Hello, {"I'm"} Sukhvir Singh.</span> {"I'm"}{" "}
+        a <span className="font-bold">Full-Stack Developer</span> with{" "}
         <span className="font-bold">3+ years</span> of experience. I love
-        building <span className="italic">scalable and user-friendly web apps</span>. My
+        building{" "}
+        <span className="italic">scalable and user-friendly web apps</span>. My
         focus is{" "}
         <span className="underline decoration-indigo-500">
           React, Next.js & TypeScript

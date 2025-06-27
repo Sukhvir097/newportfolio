@@ -3,27 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "Full-featured e-commerce web app with user auth, cart, checkout, Stripe payments, and admin dashboard.",
-    tech: ["MERN Stack", "Stripe", "Tailwind", "JWT"],
-    image: "/portfolio.PNG",
-    link: "https://github.com/sukhvir097/mern-ecommerce",
-    demo: "https://mern-ecommerce-sukhvir.vercel.app",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio built with Next.js, showcasing projects, resume download, and contact form integration.",
-    tech: ["Next.js", "Framer Motion", "TypeScript"],
-    image: "/portfolio.PNG",
-    link: "https://github.com/sukhvir097/newportfolio",
-    demo: "https://sukhvir-portfolio.vercel.app",
-  },
-];
+import { projects } from "./data";
 
 export default function ProjectsSection() {
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -48,11 +49,12 @@ export default function ContactSection() {
       </motion.p>
 
       <motion.form
+        aria-label="Contact form"
         variants={fadeInUp}
         onSubmit={(e) => {
           e.preventDefault();
           e.currentTarget.reset();
-          alert("Thanks for your message!");
+          toast.success("Thanks for your message!");
         }}
         className="flex flex-col gap-4 text-sm text-left"
       >
