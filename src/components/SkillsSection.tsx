@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { skills } from "../components/data";
+import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,7 +22,7 @@ export default function SkillsSection() {
   return (
     <motion.section
       id="skills"
-      className="py-10 px-4 max-w-3xl mx-auto text-center space-y-8 sm:py-12 sm:px-6 md:px-10"
+      className="pt-10 px-4 max-w-3xl mx-auto text-center space-y-8 sm:pt-12 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -52,6 +53,7 @@ export default function SkillsSection() {
           </motion.button>
         ))}
       </div>
+      <ScrollDownIndicator targetId="experience" />
     </motion.section>
   );
 }

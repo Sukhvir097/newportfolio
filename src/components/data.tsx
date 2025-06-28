@@ -61,7 +61,7 @@ export const projects = [
   {
     title: "E-Commerce Platform",
     description:
-      "Full-featured e-commerce web app with user auth, cart, checkout, Stripe payments, and admin dashboard.",
+      "Full-featured e-commerce web application with user auth, cart, checkout, Stripe payments, and admin dashboard.",
     tech: ["MERN Stack", "Stripe", "Tailwind", "JWT"],
     image: "/portfolio.PNG",
     link: "https://github.com/sukhvir097/mern-ecommerce",

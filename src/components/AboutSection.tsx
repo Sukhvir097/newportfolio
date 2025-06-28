@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -27,7 +28,7 @@ export default function AboutSection() {
   return (
     <motion.section
       id="about"
-      className="py-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:py-12 sm:px-6 md:px-10"
+      className="pt-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:pt-12 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -40,6 +41,7 @@ export default function AboutSection() {
       >
         About Me
       </motion.h2>
+
       {aboutTexts.map((text, idx) => (
         <motion.p
           key={idx}
@@ -50,6 +52,7 @@ export default function AboutSection() {
           {text}
         </motion.p>
       ))}
+      <ScrollDownIndicator targetId="projects" />
     </motion.section>
   );
 }

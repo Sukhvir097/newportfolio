@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import {exp} from "../components/data";
+import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -26,7 +27,7 @@ export default function ExperienceSection() {
   return (
     <motion.section
       id="experience"
-      className="py-10 px-4 max-w-4xl mx-auto  space-y-4 sm:py-12 sm:px-6 md:px-10"
+      className="pt-10 px-4 max-w-4xl mx-auto  space-y-4 sm:pt-12 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -103,6 +104,7 @@ export default function ExperienceSection() {
           })}
         </div>
       </div>
+      <ScrollDownIndicator targetId="contact" />
     </motion.section>
   );
 }
