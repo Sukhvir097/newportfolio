@@ -1,8 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { skills } from "../components/data";
 import ScrollDownIndicator from "./ScrollDownIndicator";
+import { FaReact, FaNodeJs, FaDocker, FaGitAlt, FaJs } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiMui,
+  SiPostman,
+  SiJest,
+  SiTestinglibrary,
+  SiVercel,
+  SiNetlify,
+  SiFigma,
+  SiJira,
+  SiJsonwebtokens,
+} from "react-icons/si";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,6 +33,32 @@ const staggerContainer = {
     },
   },
 };
+
+const allSkills = [
+  { name: "React.js", icon: <FaReact size={35} color="#61DAFB" /> },
+  { name: "Next.js", icon: <SiNextdotjs size={35} /> },
+  { name: "TypeScript", icon: <SiTypescript size={35} color="#3178c6" /> },
+  { name: "JavaScript (ES6+)", icon: <FaJs size={35} color="#f7df1e" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={35} color="#06B6D4" /> },
+  { name: "Material UI", icon: <SiMui size={35} color="#007FFF" /> },
+  { name: "Node.js", icon: <FaNodeJs size={35} color="#68A063" /> },
+  { name: "Express.js", icon: <SiExpress size={35} /> },
+  { name: "MongoDB + Mongoose", icon: <SiMongodb size={35} color="#47A248" /> },
+  { name: "RESTful APIs", icon: <SiPostman size={35} color="#FF6C37" /> },
+  { name: "JWT Auth", icon: <SiJsonwebtokens size={35} /> },
+  { name: "Git & GitHub", icon: <FaGitAlt size={35} color="#F05032" /> },
+  { name: "Docker", icon: <FaDocker size={35} color="#2496ED" /> },
+  { name: "Vercel", icon: <SiVercel size={35} /> },
+  { name: "Netlify", icon: <SiNetlify size={35} color="#00C7B7" /> },
+  { name: "Jest", icon: <SiJest size={35} color="#C21325" /> },
+  {
+    name: "React Testing Library",
+    icon: <SiTestinglibrary size={35} color="#E33332" />,
+  },
+  { name: "Postman", icon: <SiPostman size={35} color="#FF6C37" /> },
+  { name: "Figma", icon: <SiFigma size={35} color="#F24E1E" /> },
+  { name: "Jira", icon: <SiJira size={35} color="#0052CC" /> },
+];
 
 export default function SkillsSection() {
   return (
@@ -37,22 +79,23 @@ export default function SkillsSection() {
         Skills
       </motion.h2>
 
-      <div role="list" className="flex flex-wrap justify-center gap-3">
-        {skills.map((s) => (
-          <motion.button
-            key={s}
+      <motion.ul
+        role="list"
+        variants={staggerContainer}
+        className="flex flex-wrap justify-center gap-5"
+      >
+        {allSkills.map(({ name, icon }) => (
+          <motion.li
+            key={name}
             variants={fadeInUp}
-            type="button"
-            className="cursor-default select-none rounded-lg bg-white/50 border border-gray-300 px-4 py-2 text-gray-800 text-sm font-medium shadow-sm transition hover:scale-105 hover:bg-white"
             role="listitem"
-            tabIndex={0}
-            aria-label={s}
-            title={s}
+            className="flex flex-col items-center gap-2 transition-transform hover:scale-105 "
           >
-            {s}
-          </motion.button>
+            {icon}
+            <span className="text-sm text-gray-600 text-center">{name}</span>
+          </motion.li>
         ))}
-      </div>
+      </motion.ul>
       <ScrollDownIndicator targetId="experience" />
     </motion.section>
   );

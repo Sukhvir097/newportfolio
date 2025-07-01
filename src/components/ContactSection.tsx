@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import { sendEmail } from "../app/lib/sendEmail";
+import { motion } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,44 +12,30 @@ const fadeInUp = {
 
 const staggerContainer = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 export default function ContactSection() {
+  const [loading, setLoading] = useState(false);
 
-   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     const form = e.currentTarget;
+
     const formData = new FormData(form);
 
-    const payload = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    const { error } = await sendEmail(formData);
 
-    try {
-      const res = await fetch("/api/send-email", {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (res.ok) {
-        toast.success("Thanks for your message!!");
-        form.reset();
-      } else {
-        toast.error("Something went wrong!");
-      }
-    } catch {
-      toast.error("Failed to send. Try again later.");
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success("Email sent successfully!");
+      form.reset();
     }
+
+    setLoading(false);
   };
 
   return (
@@ -70,20 +58,19 @@ export default function ContactSection() {
         variants={fadeInUp}
         className="text-sm sm:text-base text-gray-700 leading-relaxed"
       >
-        Please contact me directly at{" "}
+        Please contact me at{" "}
         <a
           className="underline text-indigo-600 hover:text-indigo-800"
           href="mailto:sukhvirsingh4898@gmail.com"
         >
           sukhvirsingh4898@gmail.com
         </a>{" "}
-        or through this form.
+        or use this form.
       </motion.p>
 
       <motion.form
-        aria-label="Contact form"
-        variants={fadeInUp}
         onSubmit={handleSubmit}
+        variants={fadeInUp}
         className="flex flex-col gap-4 text-sm text-left"
       >
         <motion.div variants={fadeInUp}>
@@ -93,7 +80,6 @@ export default function ContactSection() {
             type="text"
             required
             placeholder="Your name"
-            aria-label="Your name"
             autoComplete="name"
             className="h-12 px-4 w-full bg-white/70 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition"
           />
@@ -106,7 +92,6 @@ export default function ContactSection() {
             type="email"
             required
             placeholder="you@example.com"
-            aria-label="Your email"
             autoComplete="email"
             className="h-12 px-4 w-full bg-white/70 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 outline-none transition"
           />
@@ -118,7 +103,6 @@ export default function ContactSection() {
             name="message"
             required
             placeholder="Your message"
-            aria-label="Your message"
             rows={5}
             autoComplete="off"
             className="p-4 w-full rounded-lg bg-white/70 border border-gray-300 resize-none focus:border-indigo-500 focus:ring-indigo-500 outline-none transition"
@@ -128,9 +112,14 @@ export default function ContactSection() {
         <motion.div variants={fadeInUp} className="mt-2 text-center">
           <button
             type="submit"
-            className="inline-block rounded bg-slate-600 hover:bg-slate-700 text-white font-medium text-sm px-6 py-2 transition transform hover:scale-105 active:scale-95"
+            disabled={loading}
+            className={`inline-block rounded bg-slate-600 text-white font-medium text-sm px-6 py-2 transition transform ${
+              loading
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-slate-700 hover:scale-105 active:scale-95"
+            }`}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </motion.div>
       </motion.form>

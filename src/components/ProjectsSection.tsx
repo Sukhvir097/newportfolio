@@ -46,13 +46,9 @@ export default function ProjectsSection() {
         Each focuses on performance, responsiveness, and great UX.
       </motion.p>
 
-      <div className="space-y-10">
+      <div className="space-y-10 relative">
         {projects.map((project, idx) => (
-          <ProjectCard
-            key={idx}
-            {...project}
-            isEven={idx % 2 === 1}
-          />
+          <ProjectCard key={idx} {...project} isEven={idx % 2 === 0} />
         ))}
       </div>
       <ScrollDownIndicator targetId="skills" />

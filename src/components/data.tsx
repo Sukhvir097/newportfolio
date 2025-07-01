@@ -37,26 +37,6 @@ export const exp = [
   },
 ];
 
-
-export const skills = [
-  "React.js",
-  "Next.js",
-  "TypeScript & JavaScript (ES6+)",
-  "Tailwind CSS",
-  "Material UI",
-  "Node.js & Express.js",
-  "MongoDB + Mongoose",
-  "RESTful API Design",
-  "JWT Authentication",
-  "Git & GitHub",
-  "Docker",
-  "Vercel & Netlify",
-  "Jira & Figma",
-  "Jest",
-  "React Testing Library",
-  "Postman",
-];
-
 export const projects = [
   {
     title: "E-Commerce Platform",

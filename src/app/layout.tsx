@@ -38,7 +38,7 @@ export default function RootLayout({
         {children}
 
         {/* React Toastify */}
-        <ToastContainer position="top-right" autoClose={4000} />
+        <ToastContainer position="top-right" style={{ position: "fixed" }} autoClose={4000} />
       </body>
     </html>
   );

@@ -33,7 +33,7 @@ export default function ProjectCard({
   const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   const cardClass = `relative mx-auto flex flex-col sm:flex-row items-center gap-6
-    ${isEven ? "sm:flex-row-reverse pl-0 sm:pl-5" : ""}
+    ${isEven ? "sm:flex-row-reverse " : ""}
     bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition`;
 
   return (
@@ -48,7 +48,7 @@ export default function ProjectCard({
       <motion.div className="sm:w-[45%] w-full max-w-[450px] mx-auto">
         <Image
           src={image}
-          alt={`Screenshot of ${title}`}
+          alt={title ? `Screenshot of ${title}` : "Project screenshot"}
           width={500}
           height={280}
           className="rounded-md object-cover shadow-md"
@@ -57,7 +57,9 @@ export default function ProjectCard({
       </motion.div>
 
       {/* Content */}
-      <motion.div className="sm:w-[55%] w-full text-left space-y-2 text-sm px-6 py-0 sm:py-4 sm:px-2 mb-6">
+      <motion.div
+        className={`sm:w-[55%] w-full text-left space-y-2 text-sm px-6 py-0 sm:py-4 sm:px-2 ${!isEven ? "mb-6 sm:mb-0" : "pl-6 sm:pl-7 mb-6 sm:mb-0"}`}
+      >
         <h3 className="text-base font-semibold text-gray-800">{title}</h3>
         <p className="text-sm text-gray-700 leading-relaxed">{description}</p>
 
