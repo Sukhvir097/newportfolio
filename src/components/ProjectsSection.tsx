@@ -31,7 +31,6 @@ export default function ProjectsSection() {
     >
       <motion.h2
         variants={fadeInUp}
-        initial={false}
         className="text-xl sm:text-2xl font-semibold text-gray-800"
       >
         Featured Projects
@@ -39,18 +38,17 @@ export default function ProjectsSection() {
 
       <motion.p
         variants={fadeInUp}
-        initial={false}
         className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed"
       >
         Here are a few projects I’ve built recently using modern technologies.
         Each focuses on performance, responsiveness, and great UX.
       </motion.p>
 
-      <div className="space-y-10 relative">
+      <motion.div variants={fadeInUp} className="space-y-10 relative">
         {projects.map((project, idx) => (
           <ProjectCard key={idx} {...project} isEven={idx % 2 === 0} />
         ))}
-      </div>
+      </motion.div>
       <ScrollDownIndicator targetId="skills" />
     </motion.section>
   );

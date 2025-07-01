@@ -66,20 +66,19 @@ export default function HomeSection() {
 
       <motion.div
         variants={fadeInUp}
-        className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-3 sm:gap-6"
+        className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-3 sm:gap-4"
       >
         <Link
           href="#contact"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded bg-gray-800 text-white hover:bg-gray-950 transition w-full sm:w-auto text-sm sm:text-base shadow-md"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-gray-800 text-white hover:bg-gray-900 transition duration-200 w-full sm:w-auto text-sm sm:text-base font-medium shadow"
           title="Contact Me"
         >
           Contact Me <FaArrowRight className="w-4 h-4 hidden sm:inline" />
         </Link>
         <a
           href="/Sukhvir_Resume.pdf"
-          aria-label="Download resume PDF"
           download
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded border border-gray-700 text-gray-700 hover:bg-white/100 transition w-full sm:w-auto text-sm sm:text-base"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-gray-400 text-gray-800 hover:bg-gray-100 transition duration-200 w-full sm:w-auto text-sm sm:text-base font-medium shadow-sm"
           title="Download CV"
         >
           Download CV <HiDownload className="w-5 h-5 hidden sm:inline" />
@@ -89,7 +88,7 @@ export default function HomeSection() {
           aria-label="Visit Sukhvir's LinkDin profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition font-medium w-full sm:w-auto text-sm sm:text-base"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
           title="LinkedIn Profile"
         >
           <FaLinkedin className="w-5 h-5 hidden sm:inline" />
@@ -100,7 +99,7 @@ export default function HomeSection() {
           aria-label="Visit Sukhvir's GitHub profile"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white transition font-medium w-full sm:w-auto text-sm sm:text-base"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-gray-700 text-gray-800 hover:bg-gray-800 hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
           title="GitHub Profile"
         >
           <FaGithub className="w-5 h-5 hidden sm:inline" />

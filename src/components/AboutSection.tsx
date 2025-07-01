@@ -34,11 +34,7 @@ export default function AboutSection() {
       viewport={{ once: true }}
       variants={staggerContainer}
     >
-      <motion.h2
-        variants={fadeInUp}
-        initial={false}
-        className="text-xl sm:text-2xl font-semibold text-gray-800"
-      >
+      <motion.h2 variants={fadeInUp} className="text-xl sm:text-2xl font-semibold text-gray-800">
         About Me
       </motion.h2>
 
@@ -46,12 +42,12 @@ export default function AboutSection() {
         <motion.p
           key={idx}
           variants={fadeInUp}
-          initial={false}
           className="text-sm sm:text-base text-gray-700 leading-relaxed"
         >
           {text}
         </motion.p>
       ))}
+
       <ScrollDownIndicator targetId="projects" />
     </motion.section>
   );

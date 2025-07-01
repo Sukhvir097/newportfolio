@@ -40,15 +40,10 @@ export default function Home() {
       <HeaderNav activeSection={activeSection} />
       <main>
         <HomeSection />
-        <hr className="my-12 border-t border-gray-300 w-2/3 mx-auto" />
         <AboutSection />
-        <hr className="my-12 border-t border-gray-300 w-2/3 mx-auto" />
         <ProjectsSection />
-        <hr className="my-12 border-t border-gray-300 w-2/3 mx-auto" />
         <SkillsSection />
-        <hr className="my-12 border-t border-gray-300 w-2/3 mx-auto" />
         <ExperienceSection />
-        <hr className="my-12 border-t border-gray-300 w-2/3 mx-auto" />
         <ContactSection />
       </main>
       <Footer />

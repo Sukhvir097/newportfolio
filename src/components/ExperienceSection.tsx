@@ -6,6 +6,7 @@ import { Briefcase } from "lucide-react";
 import { exp } from "../components/data";
 import ScrollDownIndicator from "./ScrollDownIndicator";
 
+// Variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 1) => ({
@@ -14,6 +15,7 @@ const fadeIn = {
     transition: { delay: i * 0.15, duration: 0.5 },
   }),
 };
+
 const staggerContainer = {
   hidden: {},
   visible: {
@@ -27,7 +29,7 @@ export default function ExperienceSection() {
   return (
     <motion.section
       id="experience"
-      className="pt-10 px-4 max-w-4xl mx-auto  space-y-4 sm:pt-12 sm:px-6 md:px-10"
+      className="pt-10 px-4 max-w-4xl mx-auto space-y-4 sm:pt-12 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -35,14 +37,15 @@ export default function ExperienceSection() {
     >
       <motion.h2
         variants={fadeIn}
+        custom={0}
         className="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-10"
       >
         Work Experience
       </motion.h2>
 
-      <div className="relative">
-        {/* Vertical center line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/50 md:bg-gray-300 lg:bg-gray-300 -translate-x-1/2 z-0" />
+      <motion.div variants={fadeIn} className="relative">
+        {/* Center vertical line */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/50 md:bg-gray-300 -translate-x-1/2 z-0" />
 
         <div className="flex flex-col gap-12 relative z-10">
           {exp.map((item, index) => {
@@ -52,22 +55,24 @@ export default function ExperienceSection() {
               <motion.div
                 key={item.company}
                 variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={index}
+                custom={index + 1} // +1 to offset from heading
                 className={`relative w-full md:w-1/2 px-4 ${
                   isLeft ? "self-start md:pr-12" : "self-end md:pl-12"
                 }`}
               >
-                <div
+                {/* Timeline arrows */}
+                <motion.div
+                  variants={fadeIn}
+                  custom={index + 0.5} 
                   className={`hidden md:block absolute top-6 h-[2px] bg-gray-300 z-0 ${
                     isLeft
                       ? "right-[6.25%] translate-x-1/2"
                       : "left-[6.25%] -translate-x-1/2"
                   } w-[calc(18%-2rem)]`}
                 >
-                  <div
+                  <motion.div
+                    variants={fadeIn}
+                    custom={index + 0.5}
                     className={`absolute top-[-6px] ${
                       isLeft
                         ? "right-0 border-l-[8px]"
@@ -76,7 +81,7 @@ export default function ExperienceSection() {
                       isLeft ? "border-l-gray-300" : "border-r-gray-300"
                     }`}
                   />
-                </div>
+                </motion.div>
 
                 <div className="p-4 rounded shadow-md transition-all duration-300 bg-white/50 hover:bg-white hover:scale-105">
                   <div className="flex items-center text-sm font-medium text-gray-800 gap-2 mb-1">
@@ -103,7 +108,8 @@ export default function ExperienceSection() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
+
       <ScrollDownIndicator targetId="contact" />
     </motion.section>
   );
