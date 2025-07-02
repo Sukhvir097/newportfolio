@@ -5,25 +5,7 @@ import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import { exp } from "../components/data";
 import ScrollDownIndicator from "./ScrollDownIndicator";
-
-// Variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.5 },
-  }),
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+import { fadeInUp, staggerContainer } from "@/utils/motion";
 
 export default function ExperienceSection() {
   return (
@@ -36,14 +18,14 @@ export default function ExperienceSection() {
       variants={staggerContainer}
     >
       <motion.h2
-        variants={fadeIn}
+        variants={fadeInUp}
         custom={0}
         className="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-10"
       >
         Work Experience
       </motion.h2>
 
-      <motion.div variants={fadeIn} className="relative">
+      <motion.div variants={fadeInUp} className="relative">
         {/* Center vertical line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/50 md:bg-gray-300 -translate-x-1/2 z-0" />
 
@@ -54,16 +36,16 @@ export default function ExperienceSection() {
             return (
               <motion.div
                 key={item.company}
-                variants={fadeIn}
-                custom={index + 1} // +1 to offset from heading
+                variants={fadeInUp}
+                custom={index + 1}
                 className={`relative w-full md:w-1/2 px-4 ${
                   isLeft ? "self-start md:pr-12" : "self-end md:pl-12"
                 }`}
               >
                 {/* Timeline arrows */}
                 <motion.div
-                  variants={fadeIn}
-                  custom={index + 0.5} 
+                  variants={fadeInUp}
+                  custom={index + 0.5}
                   className={`hidden md:block absolute top-6 h-[2px] bg-gray-300 z-0 ${
                     isLeft
                       ? "right-[6.25%] translate-x-1/2"
@@ -71,7 +53,7 @@ export default function ExperienceSection() {
                   } w-[calc(18%-2rem)]`}
                 >
                   <motion.div
-                    variants={fadeIn}
+                    variants={fadeInUp}
                     custom={index + 0.5}
                     className={`absolute top-[-6px] ${
                       isLeft
@@ -83,7 +65,10 @@ export default function ExperienceSection() {
                   />
                 </motion.div>
 
-                <div className="p-4 rounded shadow-md transition-all duration-300 bg-white/50 hover:bg-white hover:scale-105">
+                <div
+                  className="p-6 rounded shadow-md transition-all duration-300 bg-white/40 border-1 border-gray-100 hover:bg-white/70 hover:scale-105"
+                  aria-label={`${item.role} at ${item.company}`}
+                >
                   <div className="flex items-center text-sm font-medium text-gray-800 gap-2 mb-1">
                     <Briefcase size={16} className="text-blue-500" />
                     <span>
@@ -98,9 +83,10 @@ export default function ExperienceSection() {
                   <p className="italic text-xs text-gray-500">
                     {item.location}
                   </p>
+
                   <ul className="list-disc list-inside text-xs text-gray-700 space-y-0.5 mt-2">
-                    {item.details.map((detail) => (
-                      <li key={detail}>{detail}</li>
+                    {item.details.map((detail, idx) => (
+                      <li key={idx}>{detail}</li>
                     ))}
                   </ul>
                 </div>

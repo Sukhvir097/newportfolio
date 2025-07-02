@@ -4,20 +4,7 @@ import { projects } from "./data";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 import ScrollDownIndicator from "./ScrollDownIndicator";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+import { fadeInUp, staggerContainer } from "@/utils/motion";
 
 export default function ProjectsSection() {
   return (
@@ -29,6 +16,7 @@ export default function ProjectsSection() {
       viewport={{ once: true }}
       variants={staggerContainer}
     >
+      {/* Title */}
       <motion.h2
         variants={fadeInUp}
         className="text-xl sm:text-2xl font-semibold text-gray-800"
@@ -36,19 +24,25 @@ export default function ProjectsSection() {
         Featured Projects
       </motion.h2>
 
+      {/* Subtext */}
       <motion.p
         variants={fadeInUp}
-        className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed"
+        className="text-sm sm:text-base text-gray-600 px-2 sm:px-4 leading-relaxed"
       >
         Here are a few projects I’ve built recently using modern technologies.
         Each focuses on performance, responsiveness, and great UX.
       </motion.p>
 
-      <motion.div variants={fadeInUp} className="space-y-10 relative">
+      {/* Project Cards */}
+      <div className="flex flex-col gap-y-10 relative mt-6">
         {projects.map((project, idx) => (
-          <ProjectCard key={idx} {...project} isEven={idx % 2 === 0} />
+          <motion.div key={idx} variants={fadeInUp}>
+            <ProjectCard {...project} isEven={idx % 2 === 0} />
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
+
+      {/* Scroll to next section */}
       <ScrollDownIndicator targetId="skills" />
     </motion.section>
   );

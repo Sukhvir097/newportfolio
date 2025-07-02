@@ -1,11 +1,8 @@
+import { fadeInUp } from "@/utils/motion";
 import { motion } from "framer-motion";
 
 export default function Footer() {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
+  
   return (
     <motion.footer
       initial="hidden"

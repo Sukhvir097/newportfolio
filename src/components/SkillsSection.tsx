@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 import ScrollDownIndicator from "./ScrollDownIndicator";
-import { FaReact, FaNodeJs, FaDocker, FaGitAlt, FaJs } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+  FaGitAlt,
+  FaJs,
+} from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTypescript,
@@ -19,45 +25,29 @@ import {
   SiJira,
   SiJsonwebtokens,
 } from "react-icons/si";
+import { fadeInUp, staggerContainer } from "@/utils/motion";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
+// Skill data (deduplicated + cleaned)
 const allSkills = [
-  { name: "React.js", icon: <FaReact size={35} color="#61DAFB" /> },
-  { name: "Next.js", icon: <SiNextdotjs size={35} /> },
-  { name: "TypeScript", icon: <SiTypescript size={35} color="#3178c6" /> },
-  { name: "JavaScript (ES6+)", icon: <FaJs size={35} color="#f7df1e" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={35} color="#06B6D4" /> },
-  { name: "Material UI", icon: <SiMui size={35} color="#007FFF" /> },
-  { name: "Node.js", icon: <FaNodeJs size={35} color="#68A063" /> },
-  { name: "Express.js", icon: <SiExpress size={35} /> },
-  { name: "MongoDB + Mongoose", icon: <SiMongodb size={35} color="#47A248" /> },
-  { name: "RESTful APIs", icon: <SiPostman size={35} color="#FF6C37" /> },
-  { name: "JWT Auth", icon: <SiJsonwebtokens size={35} /> },
-  { name: "Git & GitHub", icon: <FaGitAlt size={35} color="#F05032" /> },
-  { name: "Docker", icon: <FaDocker size={35} color="#2496ED" /> },
-  { name: "Vercel", icon: <SiVercel size={35} /> },
-  { name: "Netlify", icon: <SiNetlify size={35} color="#00C7B7" /> },
-  { name: "Jest", icon: <SiJest size={35} color="#C21325" /> },
-  {
-    name: "React Testing Library",
-    icon: <SiTestinglibrary size={35} color="#E33332" />,
-  },
-  { name: "Postman", icon: <SiPostman size={35} color="#FF6C37" /> },
-  { name: "Figma", icon: <SiFigma size={35} color="#F24E1E" /> },
-  { name: "Jira", icon: <SiJira size={35} color="#0052CC" /> },
+  { name: "React.js", icon: <FaReact className="w-8 h-8 sm:w-9 sm:h-9 text-[#61DAFB]" /> },
+  { name: "Next.js", icon: <SiNextdotjs className="w-8 h-8 sm:w-9 sm:h-9" /> },
+  { name: "TypeScript", icon: <SiTypescript className="w-8 h-8 sm:w-9 sm:h-9 text-[#3178c6]" /> },
+  { name: "JavaScript (ES6+)", icon: <FaJs className="w-8 h-8 sm:w-9 sm:h-9 text-[#f7df1e]" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="w-8 h-8 sm:w-9 sm:h-9 text-[#06B6D4]" /> },
+  { name: "Material UI", icon: <SiMui className="w-8 h-8 sm:w-9 sm:h-9 text-[#007FFF]" /> },
+  { name: "Node.js", icon: <FaNodeJs className="w-8 h-8 sm:w-9 sm:h-9 text-[#68A063]" /> },
+  { name: "Express.js", icon: <SiExpress className="w-8 h-8 sm:w-9 sm:h-9" /> },
+  { name: "MongoDB + Mongoose", icon: <SiMongodb className="w-8 h-8 sm:w-9 sm:h-9 text-[#47A248]" /> },
+  { name: "RESTful APIs", icon: <SiPostman className="w-8 h-8 sm:w-9 sm:h-9 text-[#FF6C37]" /> },
+  { name: "JWT Auth", icon: <SiJsonwebtokens className="w-8 h-8 sm:w-9 sm:h-9" /> },
+  { name: "Git & GitHub", icon: <FaGitAlt className="w-8 h-8 sm:w-9 sm:h-9 text-[#F05032]" /> },
+  { name: "Docker", icon: <FaDocker className="w-8 h-8 sm:w-9 sm:h-9 text-[#2496ED]" /> },
+  { name: "Vercel", icon: <SiVercel className="w-8 h-8 sm:w-9 sm:h-9" /> },
+  { name: "Netlify", icon: <SiNetlify className="w-8 h-8 sm:w-9 sm:h-9 text-[#00C7B7]" /> },
+  { name: "Jest", icon: <SiJest className="w-8 h-8 sm:w-9 sm:h-9 text-[#C21325]" /> },
+  { name: "React Testing Library", icon: <SiTestinglibrary className="w-8 h-8 sm:w-9 sm:h-9 text-[#E33332]" /> },
+  { name: "Figma", icon: <SiFigma className="w-8 h-8 sm:w-9 sm:h-9 text-[#F24E1E]" /> },
+  { name: "Jira", icon: <SiJira className="w-8 h-8 sm:w-9 sm:h-9 text-[#0052CC]" /> },
 ];
 
 export default function SkillsSection() {
@@ -71,6 +61,7 @@ export default function SkillsSection() {
       variants={staggerContainer}
       aria-labelledby="skills-heading"
     >
+      {/* Heading */}
       <motion.h2
         id="skills-heading"
         variants={fadeInUp}
@@ -79,6 +70,7 @@ export default function SkillsSection() {
         Skills
       </motion.h2>
 
+      {/* Skill Icons */}
       <motion.ul
         role="list"
         variants={staggerContainer}
@@ -89,14 +81,18 @@ export default function SkillsSection() {
             key={name}
             variants={fadeInUp}
             role="listitem"
-            className="flex flex-col items-center gap-2 transition-transform hover:scale-105 "
+            tabIndex={0}
+            className="flex flex-col items-center gap-2 transition-transform hover:scale-105 focus:scale-105 outline-none"
           >
             {icon}
             <span className="text-sm text-gray-600 text-center">{name}</span>
           </motion.li>
         ))}
       </motion.ul>
-      <ScrollDownIndicator targetId="experience" />
+
+      {/* Scroll indicator */}
+        <ScrollDownIndicator targetId="experience" />
     </motion.section>
   );
 }
+

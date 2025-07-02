@@ -29,15 +29,17 @@ export default function ProjectCard({
     offset: ["0 1", "1.33 1"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
-  const cardClass = `relative mx-auto flex flex-col sm:flex-row items-center gap-6
-    ${isEven ? "sm:flex-row-reverse " : ""}
-    bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition`;
+  const cardClass = `
+    relative mx-4 sm:mx-auto flex flex-col  sm:flex-row items-center gap-6
+    ${isEven ? "sm:flex-row-reverse" : ""}
+    bg-white border border-gray-200 rounded-lg
+    shadow-sm hover:shadow-lg transition-all`;
 
   return (
-    <motion.section
+    <motion.div
       ref={ref}
       style={{ scale, opacity }}
       whileHover={{ scale: 1.01 }}
@@ -45,22 +47,26 @@ export default function ProjectCard({
       className={cardClass}
     >
       {/* Image */}
-      <motion.div className="sm:w-[45%] w-full max-w-[450px] mx-auto">
+      <div className="sm:w-[45%] w-full max-w-[550px] mx-auto">
         <Image
           src={image}
           alt={title ? `Screenshot of ${title}` : "Project screenshot"}
           width={500}
           height={280}
-          className="rounded-md object-cover shadow-md"
+          className="rounded-md object-cover shadow-md w-full h-auto"
           loading="lazy"
         />
-      </motion.div>
+      </div>
 
       {/* Content */}
-      <motion.div
-        className={`sm:w-[55%] w-full text-left space-y-2 text-sm px-6 py-0 sm:py-4 sm:px-2 ${!isEven ? "mb-6 sm:mb-0" : "pl-6 sm:pl-7 mb-6 sm:mb-0"}`}
+      <div
+        className={`
+          sm:w-[55%] w-full text-left space-y-3 px-5 py-5
+          ${isEven ? "sm:pl-6" : "sm:pr-6"}
+        `}
       >
         <h3 className="text-base font-semibold text-gray-800">{title}</h3>
+
         <p className="text-sm text-gray-700 leading-relaxed">{description}</p>
 
         <ul className="flex flex-wrap gap-2 mt-2">
@@ -74,7 +80,8 @@ export default function ProjectCard({
           ))}
         </ul>
 
-        <div className="flex gap-3 mt-5 text-[0.75rem]">
+        {/* Button */}
+        <div className="flex gap-3 pt-4 text-xs">
           <a
             href={demo}
             target="_blank"
@@ -94,7 +101,7 @@ export default function ProjectCard({
             GitHub
           </a>
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </motion.div>
   );
 }

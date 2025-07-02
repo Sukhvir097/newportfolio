@@ -2,20 +2,7 @@
 
 import { motion } from "framer-motion";
 import ScrollDownIndicator from "./ScrollDownIndicator";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+import { fadeInUp, staggerContainer } from "@/utils/motion";
 
 export default function AboutSection() {
   const aboutTexts = [
@@ -34,7 +21,10 @@ export default function AboutSection() {
       viewport={{ once: true }}
       variants={staggerContainer}
     >
-      <motion.h2 variants={fadeInUp} className="text-xl sm:text-2xl font-semibold text-gray-800">
+      <motion.h2
+        variants={fadeInUp}
+        className="text-xl sm:text-2xl font-semibold text-gray-800"
+      >
         About Me
       </motion.h2>
 
@@ -42,7 +32,7 @@ export default function AboutSection() {
         <motion.p
           key={idx}
           variants={fadeInUp}
-          className="text-sm sm:text-base text-gray-700 leading-relaxed"
+          className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 sm:px-4"
         >
           {text}
         </motion.p>

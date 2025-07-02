@@ -4,16 +4,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { sendEmail } from "../app/lib/sendEmail";
 import { motion } from "framer-motion";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+import { fadeInUp, staggerContainer } from "@/utils/motion";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
