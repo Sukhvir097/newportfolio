@@ -1,13 +1,30 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    images: {
+  images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
     ],
+  },
+
+  // Redirect www to non-www
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.sukhvirportfolio.info",
+          },
+        ],
+        destination: "https://sukhvirportfolio.info/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -33,6 +33,7 @@ export default function HomeSection() {
       </motion.div>
 
       <motion.h1
+        id="hero-title"
         variants={fadeInUp}
         className="text-base sm:text-lg md:text-xl font-bold text-gray-800"
       >
