@@ -20,14 +20,14 @@ export default function ExperienceSection() {
       <motion.h2
         variants={fadeInUp}
         custom={0}
-        className="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-10"
+        className="text-xl sm:text-2xl font-semibold text-center text-gray-900 mb-10"
       >
         Work Experience
       </motion.h2>
 
       <motion.div variants={fadeInUp} className="relative">
         {/* Center vertical line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-white/50 md:bg-gray-300 -translate-x-1/2 z-0" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-300 -translate-x-1/2 z-0" />
 
         <div className="flex flex-col gap-12 relative z-10">
           {exp.map((item, index) => {
@@ -66,25 +66,23 @@ export default function ExperienceSection() {
                 </motion.div>
 
                 <div
-                  className="p-6 rounded shadow-md transition-all duration-300 bg-white/40 border-1 border-gray-100 hover:bg-white/70 hover:scale-105"
+                  className="p-6 rounded shadow-md transition-all duration-300 bg-white border border-gray-200 hover:bg-gray-50 hover:scale-105"
                   aria-label={`${item.role} at ${item.company}`}
                 >
-                  <div className="flex items-center text-sm font-medium text-gray-800 gap-2 mb-1">
-                    <Briefcase size={16} className="text-blue-500" />
+                  <div className="flex items-center text-sm font-medium text-gray-900 gap-2 mb-1">
+                    <Briefcase size={16} className="text-blue-600" />
                     <span>
                       {item.role}
-                      <span className="font-normal text-gray-600">
+                      <span className="font-normal text-gray-700">
                         {" "}
                         — {item.company}
                       </span>
                     </span>
                   </div>
-                  <span className="text-xs text-gray-500">{item.duration}</span>
-                  <p className="italic text-xs text-gray-500">
-                    {item.location}
-                  </p>
+                  <span className="text-xs text-gray-600">{item.duration}</span>
+                  <p className="italic text-xs text-gray-600">{item.location}</p>
 
-                  <ul className="list-disc list-inside text-xs text-gray-700 space-y-0.5 mt-2">
+                  <ul className="list-disc list-inside text-xs text-gray-800 space-y-0.5 mt-2">
                     {item.details.map((detail, idx) => (
                       <li key={idx}>{detail}</li>
                     ))}

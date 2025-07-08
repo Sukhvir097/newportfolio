@@ -23,7 +23,7 @@ export default function HomeSection() {
         className="flex justify-center mt-18 sm:mt-0"
       >
         <Image
-          src="/2N1A4997.JPG"
+          src="/2N1A4997.webp"
           alt="Portrait of Sukhvir Singh"
           width={112}
           height={112}
@@ -40,22 +40,21 @@ export default function HomeSection() {
         Hi, I’m Sukhvir Singh
       </motion.h1>
 
-      <motion.p
-        variants={fadeInUp}
-        className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed md:leading-loose"
-      >
+      <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed md:leading-loose">
         A Full-Stack Developer with <strong>3+ years</strong> experience in
         building scalable and user-friendly apps using{" "}
         <span className="underline decoration-gray-500 font-semibold">
           React, Next.js & TypeScript
         </span>
         .
-      </motion.p>
+      </p>
 
+      {/*buttons/links */}
       <motion.div
         variants={fadeInUp}
         className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-3 sm:gap-4"
       >
+        {/* Contact Me button */}
         <Link
           href="#contact"
           role="button"
@@ -69,6 +68,7 @@ export default function HomeSection() {
           />
         </Link>
 
+        {/* Download CV button */}
         <a
           href="/Sukhvir_Resume.pdf"
           download
@@ -80,6 +80,7 @@ export default function HomeSection() {
           <HiDownload className="w-5 h-5 hidden sm:inline" aria-hidden="true" />
         </a>
 
+        {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/in/sukhvir-singh4898"
           target="_blank"
@@ -93,6 +94,7 @@ export default function HomeSection() {
           LinkedIn
         </a>
 
+        {/* GitHub */}
         <a
           href="https://github.com/sukhvir097"
           target="_blank"
@@ -106,6 +108,8 @@ export default function HomeSection() {
           GitHub
         </a>
       </motion.div>
+
+      {/* Scroll Down Indicator (unchanged) */}
       <ScrollDownIndicator targetId="about" />
     </motion.section>
   );
