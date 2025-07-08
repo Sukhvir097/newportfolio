@@ -19,7 +19,33 @@ export const metadata: Metadata = {
   title: "Sukhvir Singh | Full-Stack Developer - React, Next.js, TypeScript",
   description:
     "Sukhvir Singh is a full-stack developer with expertise in React, Next.js, and TypeScript. Explore modern projects and get in touch.",
+  metadataBase: new URL("https://sukhvirportfolio.info"),
+  openGraph: {
+    title: "Sukhvir Singh | Full-Stack Developer",
+    description:
+      "Explore projects by Sukhvir Singh, full-stack developer specializing in React, Next.js, and TypeScript.",
+    url: "https://sukhvirportfolio.info",
+    siteName: "Sukhvir Portfolio",
+    images: [
+      {
+        url: "/og-thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "Sukhvir Singh Portfolio OG Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sukhvir Singh | Full-Stack Developer",
+    description:
+      "Explore React, Next.js, and TypeScript projects by full-stack developer Sukhvir Singh.",
+    images: ["/og-thumbnail.png"],
+  },
 };
+
 
 export default function RootLayout({
   children,
