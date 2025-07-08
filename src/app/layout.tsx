@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   title: "Sukhvir Singh | Full-Stack Developer - React, Next.js, TypeScript",
   description:
     "Sukhvir Singh is a full-stack developer with expertise in React, Next.js, and TypeScript. Explore modern projects and get in touch.",
-  metadataBase: new URL("https://sukhvirportfolio.info"),
   openGraph: {
     title: "Sukhvir Singh | Full-Stack Developer",
     description:
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Sukhvir Portfolio",
     images: [
       {
-        url: "/og-thumbnail.png",
+        url: "https://sukhvirportfolio.info/og-thumbnail.png",
         width: 1200,
         height: 630,
         alt: "Sukhvir Singh Portfolio OG Image",
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
     title: "Sukhvir Singh | Full-Stack Developer",
     description:
       "Explore React, Next.js, and TypeScript projects by full-stack developer Sukhvir Singh.",
-    images: ["/og-thumbnail.png"],
+    images: ["https://sukhvirportfolio.info/og-thumbnail.png"],
   },
 };
 
