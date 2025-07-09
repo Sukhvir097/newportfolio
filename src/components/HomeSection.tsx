@@ -12,7 +12,7 @@ export default function HomeSection() {
   return (
     <motion.section
       id="home"
-      className="pt-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:pt-10 sm:px-6 md:px-10"
+      className="pt-6 px-4 max-w-3xl mx-auto text-center space-y-4 sm:pt-10 sm:px-6 md:px-10"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

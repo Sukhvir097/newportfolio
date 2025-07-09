@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -31,6 +31,8 @@ export default function HeaderNav() {
   const [active, setActive] = useState("#home");
   const activeRef = useRef(active);
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   useEffect(() => {
     activeRef.current = active;
   }, [active]);
@@ -57,7 +59,7 @@ export default function HeaderNav() {
         throttledSetActive(`#${visible[0].target.id}`);
       },
       {
-        rootMargin: "-50% 0px -50% 0px", 
+        rootMargin: "-50% 0px -50% 0px",
         threshold: 0.3,
       }
     );
@@ -67,6 +69,11 @@ export default function HeaderNav() {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, [throttledSetActive]);
 
+  function handleMobileLinkClick(href: string) {
+    setActive(href);
+    setMobileOpen(false);
+  }
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -74,7 +81,8 @@ export default function HeaderNav() {
       transition={{ duration: 0.6 }}
       className="fixed top-0 sm:top-6 left-1/2 z-50 w-full max-w-[40rem] -translate-x-1/2 px-0 sm:px-4"
     >
-      <nav className="rounded-none sm:rounded-full border border-white/40 bg-white/70 backdrop-blur-xl shadow-lg shadow-indigo-500/20">
+      {/* Desktop nav */}
+      <nav className="hidden sm:block rounded-none sm:rounded-full border border-white/40 bg-white/70 backdrop-blur-xl shadow-lg shadow-indigo-500/20">
         <ul className="flex items-center justify-center h-16 sm:h-14 px-4 sm:px-12 gap-4 sm:gap-8 text-base font-medium text-gray-700">
           {navLinks.map(({ name, href }) => (
             <li key={href}>
@@ -82,7 +90,7 @@ export default function HeaderNav() {
                 href={href}
                 scroll={true}
                 title={`Navigate to ${name} section`}
-                onClick={() => setActive(href)} 
+                onClick={() => setActive(href)}
                 aria-current={active === href ? "page" : undefined}
                 className={`relative transition duration-200 hover:text-black ${
                   active === href ? "text-black font-semibold" : ""
@@ -96,6 +104,65 @@ export default function HeaderNav() {
           ))}
         </ul>
       </nav>
+
+      {/* Added: mobile hamburger button - visible only on small screens */}
+      <div className="sm:hidden flex justify-end pr-4 pt-3">
+        <button
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1 focus:outline-none bg-gray-50 rounded-md"
+        >
+          {/* Hamburger icon with animation */}
+          <span
+            className={`block h-[3px] w-6 rounded bg-gray-700 transition-transform duration-300 ${
+              mobileOpen ? "translate-y-[6px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-[3px] w-6 rounded bg-gray-700 transition-opacity duration-300 ${
+              mobileOpen ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`block h-[3px] w-6 rounded bg-gray-700 transition-transform duration-300 ${
+              mobileOpen ? "-translate-y-[6px] -rotate-45" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Added: mobile menu, animates in/out and closes on link click */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-full left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-gray-200 shadow-md sm:hidden"
+          >
+            <ul className="flex flex-col gap-4 p-4 text-center font-medium text-gray-700">
+              {navLinks.map(({ name, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    scroll={true}
+                    title={`Navigate to ${name} section`}
+                    onClick={() => handleMobileLinkClick(href)}
+                    aria-current={active === href ? "page" : undefined}
+                    className={`block py-2 transition-colors duration-200 hover:text-black ${
+                      active === href ? "text-black font-semibold" : ""
+                    }`}
+                  >
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
