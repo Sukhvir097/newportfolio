@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.sukhvirportfolio.info",
   },
+  icons: {       
+    apple: "/apple-touch-icon.png",         
+  },
   openGraph: {
     title: "Sukhvir Singh | Full-Stack Developer",
     description: "Explore projects by Sukhvir Singh, full-stack developer specializing in React, Next.js, and TypeScript.",
