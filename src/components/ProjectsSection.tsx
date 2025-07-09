@@ -29,8 +29,9 @@ export default function ProjectsSection() {
         variants={fadeInUp}
         className="text-sm sm:text-base text-gray-600 px-2 sm:px-4 leading-relaxed"
       >
-        Here are a few projects I’ve built recently using modern technologies.
-        Each focuses on performance, responsiveness, and great UX.
+        Here are a few projects I’ve recently built using cutting-edge
+        technologies. Each project emphasizes performance, responsiveness, and
+        great user experience (UX):
       </motion.p>
 
       {/* Project Cards */}

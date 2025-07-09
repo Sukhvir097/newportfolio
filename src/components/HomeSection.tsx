@@ -42,7 +42,7 @@ export default function HomeSection() {
 
       <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed md:leading-loose">
         A Full-Stack Developer with <strong>3+ years</strong> experience in
-        building scalable and user-friendly apps using{" "}
+        building scalable and user-friendly web applications using{" "}
         <span className="underline decoration-gray-500 font-semibold">
           React, Next.js & TypeScript
         </span>

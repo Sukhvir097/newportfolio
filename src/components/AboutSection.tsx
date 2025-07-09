@@ -6,10 +6,10 @@ import { fadeInUp, staggerContainer } from "@/utils/motion";
 
 export default function AboutSection() {
   const aboutTexts = [
-    "I'm Sukhvir Singh, a passionate and detail-oriented Full Stack Developer based in Calgary, Alberta. I build scalable, secure, and user-friendly web apps using React, Next.js, Node.js, TypeScript, and Material UI.",
-    "Experienced in full-stack development, API integration, and deployments on GCP & AWS. Proficient with GitHub, Jira, Figma, and Jest.",
-    "I'm looking for a full-time software developer role where I can grow and contribute meaningfully.",
-    "Outside coding, I explore tech trends, play games, watch movies, and dive into history & philosophy. I'm also learning guitar.",
+    "I'm Sukhvir Singh, a passionate and detail-oriented Full Stack Developer based in Calgary, Alberta. I specialize in building scalable, secure, and user-friendly web applications using React, Next.js, Node.js, TypeScript, and Material UI.",
+    "With solid experience in full-stack development, API integration, and cloud deployments on Google Cloud Platform (GCP) and Amazon Web Services (AWS), I bring proficiency in modern development workflows using GitHub, Jira, Figma, and Jest.",
+    "I am actively seeking a full-time software developer role where I can continue to grow professionally and contribute meaningfully to innovative and impactful projects.",
+    "Beyond coding, I enjoy exploring the latest technology trends, playing video games, watching movies, and diving deep into history and philosophy. Additionally, I am currently learning to play the guitar to nurture my creative side.",
   ];
 
   return (
