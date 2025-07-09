@@ -17,8 +17,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sukhvir Singh | Full-Stack Developer - React, Next.js, TypeScript",
+  title: "Sukhvir Singh | Full-Stack React & Next.js Developer",
   description: "Sukhvir Singh is a full-stack developer with expertise in React, Next.js, and TypeScript. Explore modern projects and get in touch.",
+  keywords: [
+    "Sukhvir Singh",
+    "Full-Stack Developer",
+    "React Developer",
+    "Next.js Portfolio",
+    "TypeScript Developer",
+    "Frontend Developer",
+    "Web Developer Portfolio"
+  ],
+  authors: [{ name: "Sukhvir Singh", url: "https://sukhvirportfolio.info" }],
+  alternates: {
+    canonical: "https://sukhvirportfolio.info/",
+  },
   openGraph: {
     title: "Sukhvir Singh | Full-Stack Developer",
     description: "Explore projects by Sukhvir Singh, full-stack developer specializing in React, Next.js, and TypeScript.",
@@ -42,6 +55,7 @@ export const metadata: Metadata = {
     images: ["https://sukhvirportfolio.info/og-thumbnail.png"],
   },
 };
+
 
 export default function RootLayout({ children,}: Readonly<{ children: React.ReactNode;}>) {
   return (
