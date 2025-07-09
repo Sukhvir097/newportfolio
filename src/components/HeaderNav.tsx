@@ -13,7 +13,10 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-function throttle<FuncArgs extends unknown[]>(fn: (...args: FuncArgs) => void, limit: number) {
+function throttle<FuncArgs extends unknown[]>(
+  fn: (...args: FuncArgs) => void,
+  limit: number
+) {
   let inThrottle = false;
   return function (this: unknown, ...args: FuncArgs) {
     if (!inThrottle) {
@@ -34,24 +37,34 @@ export default function HeaderNav() {
 
   const throttledSetActive = useRef(
     throttle((current: string) => {
-      if (current !== activeRef.current) setActive(current);
+      if (current !== activeRef.current) {
+        setActive(current);
+      }
     }, 100)
   ).current;
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
+        const visible = entries.filter((entry) => entry.isIntersecting);
         if (!visible.length) return;
-        visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        visible.sort(
+          (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+        );
         throttledSetActive(`#${visible[0].target.id}`);
       },
-      { rootMargin: "-40% 0px -40% 0px", threshold: 0.1 }
+      {
+        rootMargin: "-50% 0px -50% 0px", 
+        threshold: 0.3,
+      }
     );
 
-    sections.forEach((s) => observer.observe(s));
-    return () => sections.forEach((s) => observer.unobserve(s));
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
   }, [throttledSetActive]);
 
   return (
@@ -67,8 +80,10 @@ export default function HeaderNav() {
             <li key={href}>
               <Link
                 href={href}
-                aria-current={active === href ? "page" : undefined}
+                scroll={true}
                 title={`Navigate to ${name} section`}
+                onClick={() => setActive(href)} 
+                aria-current={active === href ? "page" : undefined}
                 className={`relative transition duration-200 hover:text-black ${
                   active === href ? "text-black font-semibold" : ""
                 } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:scale-x-100 ${
