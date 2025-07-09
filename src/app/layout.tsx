@@ -28,18 +28,18 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "Web Developer Portfolio"
   ],
-  authors: [{ name: "Sukhvir Singh", url: "https://sukhvirportfolio.info" }],
+  authors: [{ name: "Sukhvir Singh", url: "https://www.sukhvirportfolio.info" }],
   alternates: {
-    canonical: "https://sukhvirportfolio.info/",
+    canonical: "https://www.sukhvirportfolio.info",
   },
   openGraph: {
     title: "Sukhvir Singh | Full-Stack Developer",
     description: "Explore projects by Sukhvir Singh, full-stack developer specializing in React, Next.js, and TypeScript.",
-    url: "https://sukhvirportfolio.info",
+    url: "https://www.sukhvirportfolio.info",
     siteName: "Sukhvir Portfolio",
     images: [
       {
-        url: "https://sukhvirportfolio.info/og-thumbnail.png",
+        url: "https://www.sukhvirportfolio.info/og-thumbnail.png",
         width: 1200,
         height: 630,
         alt: "Sukhvir Singh Portfolio OG Image",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sukhvir Singh | Full-Stack Developer",
     description: "Explore React, Next.js, and TypeScript projects by full-stack developer Sukhvir Singh.",
-    images: ["https://sukhvirportfolio.info/og-thumbnail.png"],
+    images: ["https://www.sukhvirportfolio.info/og-thumbnail.png"],
   },
 };
 
