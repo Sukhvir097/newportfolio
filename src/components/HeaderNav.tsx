@@ -151,7 +151,7 @@ export default function HeaderNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-2 right-2 w-2/3 bg-white/90 backdrop-blur-lg border-t border-gray-200  rounded-lg shadow-md sm:hidden max-h-[80vh] overflow-y-auto"
+            className="fixed top-2 right-2 w-3/5 bg-white/90 backdrop-blur-lg border-t border-gray-200  rounded-lg shadow-md sm:hidden max-h-[80vh] overflow-y-auto"
           >
             <ul className="flex flex-col gap-3 p-5 mt-5 text-center font-medium text-gray-700">
               {navLinks.map(({ name, href, icon }) => (
