@@ -1,33 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ScrollDownIndicator from "./ScrollDownIndicator";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDocker,
-  FaGitAlt,
-  FaJs,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiMongodb,
-  SiExpress,
-  SiMui,
-  SiPostman,
-  SiJest,
-  SiTestinglibrary,
-  SiVercel,
-  SiNetlify,
-  SiFigma,
-  SiJira,
-  SiJsonwebtokens,
-} from "react-icons/si";
+import { FaReact, FaNodeJs, FaDocker, FaGitAlt, FaJs,} from "react-icons/fa";
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiMongodb, SiExpress, SiMui, SiPostman, SiJest, SiTestinglibrary, SiVercel, SiNetlify, SiFigma, SiJira, SiJsonwebtokens,} from "react-icons/si";
+import SectionWrapper from "@/components/SectionWrapper";
 import { fadeInUp, staggerContainer } from "@/utils/motion";
 
-// Skill data (deduplicated + cleaned)
 const allSkills = [
   { name: "React.js", icon: <FaReact className="w-8 h-8 sm:w-9 sm:h-9 text-[#61DAFB]" /> },
   { name: "Next.js", icon: <SiNextdotjs className="w-8 h-8 sm:w-9 sm:h-9" /> },
@@ -52,30 +30,8 @@ const allSkills = [
 
 export default function SkillsSection() {
   return (
-    <motion.section
-      id="skills"
-      className="pt-10 px-4 max-w-3xl mx-auto text-center space-y-8 sm:pt-12 sm:px-6 md:px-10"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-      aria-labelledby="skills-heading"
-    >
-      {/* Heading */}
-      <motion.h2
-        id="skills-heading"
-        variants={fadeInUp}
-        className="text-xl sm:text-2xl font-semibold text-gray-800"
-      >
-        Skills
-      </motion.h2>
-
-      {/* Skill Icons */}
-      <motion.ul
-        role="list"
-        variants={staggerContainer}
-        className="flex flex-wrap justify-center gap-5"
-      >
+    <SectionWrapper id="skills" title="Skills" className="space-y-8" scrollTargetId="experience">
+      <motion.ul role="list" variants={staggerContainer} className="flex flex-wrap justify-center gap-5">
         {allSkills.map(({ name, icon }) => (
           <motion.li
             key={name}
@@ -89,10 +45,6 @@ export default function SkillsSection() {
           </motion.li>
         ))}
       </motion.ul>
-
-      {/* Scroll indicator */}
-        <ScrollDownIndicator targetId="experience" />
-    </motion.section>
+    </SectionWrapper>
   );
 }
-

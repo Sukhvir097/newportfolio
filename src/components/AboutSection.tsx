@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ScrollDownIndicator from "./ScrollDownIndicator";
-import { fadeInUp, staggerContainer } from "@/utils/motion";
+import SectionWrapper from "@/components/SectionWrapper";
+import { fadeInUp } from "@/utils/motion";
 
 export default function AboutSection() {
   const aboutTexts = [
@@ -13,32 +13,17 @@ export default function AboutSection() {
   ];
 
   return (
-    <motion.section
-      id="about"
-      className="pt-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:pt-12 sm:px-6 md:px-10"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-    >
-      <motion.h2
-        variants={fadeInUp}
-        className="text-xl sm:text-2xl font-semibold text-gray-800"
-      >
-        About Me
-      </motion.h2>
-
+    <SectionWrapper id="about" title="About Me" scrollTargetId="projects">
       {aboutTexts.map((text, idx) => (
         <motion.p
           key={idx}
           variants={fadeInUp}
-          className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 sm:px-4"
+          transition={{ delay: idx * 0.2 }}
+          className="text-sm sm:text-base text-gray-700 leading-relaxed"
         >
           {text}
         </motion.p>
       ))}
-
-      <ScrollDownIndicator targetId="projects" />
-    </motion.section>
+    </SectionWrapper>
   );
 }

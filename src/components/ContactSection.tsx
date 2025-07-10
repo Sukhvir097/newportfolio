@@ -4,7 +4,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { sendEmail } from "../app/lib/sendEmail";
 import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer } from "@/utils/motion";
+import { fadeInUp } from "@/utils/motion";
+import SectionWrapper from "@/components/SectionWrapper";
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
@@ -14,9 +15,7 @@ export default function ContactSection() {
     setLoading(true);
 
     const form = e.currentTarget;
-
     const formData = new FormData(form);
-
     const { error } = await sendEmail(formData);
 
     if (error) {
@@ -30,21 +29,7 @@ export default function ContactSection() {
   };
 
   return (
-    <motion.section
-      id="contact"
-      className="py-10 px-4 max-w-3xl mx-auto text-center space-y-4 sm:py-12 sm:px-6 md:px-10"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-    >
-      <motion.h2
-        variants={fadeInUp}
-        className="text-xl sm:text-2xl font-semibold text-gray-800"
-      >
-        Contact me
-      </motion.h2>
-
+    <SectionWrapper id="contact" title="Contact me">
       <motion.p
         variants={fadeInUp}
         className="text-sm sm:text-base text-gray-700 leading-relaxed"
@@ -58,7 +43,6 @@ export default function ContactSection() {
         </a>{" "}
         or use this form.
       </motion.p>
-
       <motion.form
         onSubmit={handleSubmit}
         variants={fadeInUp}
@@ -114,6 +98,6 @@ export default function ContactSection() {
           </button>
         </motion.div>
       </motion.form>
-    </motion.section>
+    </SectionWrapper>
   );
 }

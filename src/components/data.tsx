@@ -56,7 +56,7 @@ export const projects = [
     description:
       "A comprehensive, full-featured e-commerce web application designed to provide a seamless shopping experience. Features include user authentication, product browsing, shopping cart, checkout with Stripe payment integration, and an intuitive admin dashboard for order and inventory management.",
     tech: ["MERN Stack", "Stripe", "Tailwind", "JWT"],
-    image: "/portfolio.PNG",
+    image: "/ecom.png",
     link: "https://github.com/Sukhvir097/newportfolio.git",
     demo: "https://www.sukhvirportfolio.info",
   },
@@ -65,7 +65,7 @@ export const projects = [
     description:
       "A personal portfolio website showcasing my development projects, skills, and professional experience. Built with Next.js for optimized SEO and performance, it features smooth animations powered by Framer Motion, TypeScript for type safety, and a contact form integrated for easy communication.",
     tech: ["Next.js", "Framer Motion", "TypeScript"],
-    image: "/portfolio.PNG",
+    image: "/portfolio.png",
     link: "https://github.com/Sukhvir097/newportfolio.git",
     demo: "https://www.sukhvirportfolio.info",
   },

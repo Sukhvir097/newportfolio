@@ -4,13 +4,24 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ✅ Import icons
+import {
+  FiHome,
+  FiUser,
+  FiGrid,
+  FiCode,
+  FiBriefcase,
+  FiMail,
+} from "react-icons/fi";
+
+// ✅ Include icons in the navLinks array
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", icon: <FiHome /> },
+  { name: "About", href: "#about", icon: <FiUser /> },
+  { name: "Projects", href: "#projects", icon: <FiGrid /> },
+  { name: "Skills", href: "#skills", icon: <FiCode /> },
+  { name: "Experience", href: "#experience", icon: <FiBriefcase /> },
+  { name: "Contact", href: "#contact", icon: <FiMail /> },
 ];
 
 function throttle<FuncArgs extends unknown[]>(
@@ -105,7 +116,7 @@ export default function HeaderNav() {
         </ul>
       </nav>
 
-      {/* Added: mobile hamburger button - visible only on small screens */}
+      {/*  mobile hamburger button  */}
       <div className="sm:hidden flex justify-end pr-4 pt-3">
         <button
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -132,7 +143,7 @@ export default function HeaderNav() {
         </button>
       </div>
 
-      {/* Added: mobile menu, animates in/out and closes on link click */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
@@ -140,10 +151,10 @@ export default function HeaderNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-gray-200 shadow-md sm:hidden"
+            className="fixed top-2 right-2 w-1/2 bg-white/90 backdrop-blur-lg border-t border-gray-200  rounded-lg shadow-md sm:hidden h-[52vh] overflow-y-auto"
           >
-            <ul className="flex flex-col gap-4 p-4 text-center font-medium text-gray-700">
-              {navLinks.map(({ name, href }) => (
+            <ul className="flex flex-col gap-3 p-4 text-center font-medium text-gray-700">
+              {navLinks.map(({ name, href, icon }) => (
                 <li key={href}>
                   <Link
                     href={href}
@@ -151,11 +162,12 @@ export default function HeaderNav() {
                     title={`Navigate to ${name} section`}
                     onClick={() => handleMobileLinkClick(href)}
                     aria-current={active === href ? "page" : undefined}
-                    className={`block py-2 transition-colors duration-200 hover:text-black ${
+                    className={`flex items-center justify-center gap-2 py-2 transition-colors duration-200 hover:text-black ${
                       active === href ? "text-black font-semibold" : ""
                     }`}
                   >
-                    {name}
+                    <span className="text-md">{icon}</span>
+                    <span>{name}</span>
                   </Link>
                 </li>
               ))}

@@ -4,27 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import { exp } from "../components/data";
-import ScrollDownIndicator from "./ScrollDownIndicator";
-import { fadeInUp, staggerContainer } from "@/utils/motion";
+import SectionWrapper from "@/components/SectionWrapper";
+import { fadeInUp } from "@/utils/motion";
 
 export default function ExperienceSection() {
   return (
-    <motion.section
-      id="experience"
-      className="pt-10 px-4 max-w-4xl mx-auto space-y-4 sm:pt-12 sm:px-6 md:px-10"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-    >
-      <motion.h2
-        variants={fadeInUp}
-        custom={0}
-        className="text-xl sm:text-2xl font-semibold text-center text-gray-900 mb-10"
-      >
-        Work Experience
-      </motion.h2>
-
+    <SectionWrapper id="experience" title="Work Experience" className="max-w-4xl space-y-8" scrollTargetId="contact">
       <motion.div variants={fadeInUp} className="relative">
         {/* Center vertical line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-300 -translate-x-1/2 z-0" />
@@ -93,8 +78,6 @@ export default function ExperienceSection() {
           })}
         </div>
       </motion.div>
-
-      <ScrollDownIndicator targetId="contact" />
-    </motion.section>
+    </SectionWrapper>
   );
 }
