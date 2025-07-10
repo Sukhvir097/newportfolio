@@ -65,7 +65,7 @@ export const projects = [
     description:
       "A personal portfolio website showcasing my development projects, skills, and professional experience. Built with Next.js for optimized SEO and performance, it features smooth animations powered by Framer Motion, TypeScript for type safety, and a contact form integrated for easy communication.",
     tech: ["Next.js", "Framer Motion", "TypeScript"],
-    image: "/portfolio.png",
+    image: "/portfolio3.png",
     link: "https://github.com/Sukhvir097/newportfolio.git",
     demo: "https://www.sukhvirportfolio.info",
   },
