@@ -33,7 +33,7 @@ export default function ProjectCard({
   const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   const cardClass = `
-    relative mx-4 sm:mx-auto flex flex-col  sm:flex-row items-center gap-6
+    relative mx-4 sm:mx-auto flex flex-col sm:flex-row items-center gap-6
     ${isEven ? "sm:flex-row-reverse" : ""}
     bg-white border border-gray-200 rounded-lg
     shadow-sm hover:shadow-lg transition-all`;
@@ -65,9 +65,8 @@ export default function ProjectCard({
           ${isEven ? "sm:pl-6" : "sm:pr-6"}
         `}
       >
-        <h3 className="text-base font-semibold text-gray-800">{title}</h3>
-
-        <p className="text-sm text-gray-700 leading-relaxed">{description}</p>
+        <h3 className="text-base font-semibold text-gray-900">{title}</h3>
+        <p className="text-sm text-gray-800 leading-relaxed">{description}</p>
 
         <ul className="flex flex-wrap gap-2 mt-2">
           {tech.map((t) => (
