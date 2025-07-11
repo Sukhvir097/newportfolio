@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://sukhvirportfolio.info/sitemap.xml',
+    sitemap: 'https://www.sukhvirportfolio.info/sitemap.xml',
   }
 }
