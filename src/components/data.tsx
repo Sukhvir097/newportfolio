@@ -16,7 +16,7 @@ export const exp = [
   },
   {
     role: "Software Designer",
-    company: "INFOWIZ Software Solutions",
+    company: "INFOWIZ Soft. Sol.",
     location: "Chandigarh, India",
     duration: "Apr 2020 – Jul 2021",
     details: [
