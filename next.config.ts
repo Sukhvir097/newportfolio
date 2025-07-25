@@ -1,9 +1,4 @@
 import type { NextConfig } from "next";
-import withBundleAnalyzer from '@next/bundle-analyzer';
-
-const bundleAnalyzer = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-});
 
 const nextConfig: NextConfig = {
   images: {
@@ -14,8 +9,22 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.sukhvirportfolio.info",
+          },
+        ],
+        destination: "https://sukhvirportfolio.info/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
-export default bundleAnalyzer(nextConfig);
-
-
+export default nextConfig;

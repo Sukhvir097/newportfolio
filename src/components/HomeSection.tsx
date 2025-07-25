@@ -61,7 +61,7 @@ export default function HomeSection() {
           href="/Sukhvir_Resume.pdf"
           download
           role="button"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-gray-400 text-gray-800 hover:bg-gray-100 transition duration-200 w-full sm:w-auto text-sm sm:text-base font-medium shadow-sm"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border  bg-green-700 text-white sm:bg-white/10 sm:border-gray-400 sm:text-gray-800 sm:hover:bg-gray-100 transition duration-200 w-full sm:w-auto text-sm sm:text-base font-medium shadow-sm"
           title="Download CV"
         >
           Download CV <HiDownload className="w-5 h-5 hidden sm:inline" />
@@ -71,7 +71,7 @@ export default function HomeSection() {
           href="https://www.linkedin.com/in/sukhvir-singh4898"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border bg-indigo-600 text-white sm:bg-white/10 sm:border-indigo-600 sm:text-indigo-600 sm:hover:bg-indigo-600 sm:hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
         >
           <FaLinkedin className="w-5 h-5 hidden sm:inline" />
           LinkedIn
@@ -81,7 +81,7 @@ export default function HomeSection() {
           href="https://github.com/sukhvir097"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-gray-700 text-gray-800 hover:bg-gray-800 hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-md border bg-gray-800 text-white sm:bg-white/10 sm:border-gray-700 sm:text-gray-800 sm:hover:bg-gray-800 sm:hover:text-white transition duration-200 font-medium w-full sm:w-auto text-sm sm:text-base shadow-sm"
         >
           <FaGithub className="w-5 h-5 hidden sm:inline" />
           GitHub
